@@ -2,6 +2,7 @@ import random
 import uuid
 from datetime import datetime, timedelta
 import pytz
+import re
 from faker import Faker
 from sqlalchemy import (
     create_engine, Column, String, Float, DateTime, Enum, ForeignKey, Integer, Boolean, Text
@@ -13,7 +14,7 @@ import json
 # --- CONFIG ---
 fake = Faker()
 Base = declarative_base()
-DB_URI = "mysql+pymysql://username:password@localhost:3306/testdb"  # ← Update
+DB_URI = "mysql+pymysql://root:141124@localhost:3306/ordersdb"  # ← Update
 TIMEZONES = ["UTC", "Asia/Ho_Chi_Minh", "Europe/London", "America/New_York", "Asia/Tokyo"]
 NUM_USERS = 100
 NUM_PRODUCTS = 50
@@ -25,6 +26,11 @@ SHARED_DATA = {
     'product_ids': [],
     'user_profiles': {}
 }
+
+def clean_phone_number():
+    raw = fake.phone_number()
+    digits = re.sub(r'\D', '', raw)
+    return digits[:10]  # Hoặc 9 nếu muốn
 
 # --- SCHEMA ---
 class User(Base):
@@ -136,7 +142,7 @@ def generate_users():
             user_id=user_id,
             email=email,
             name=fake.name(),
-            phone=fake.phone_number() if random.random() > 0.1 else None,
+            phone=clean_phone_number() if random.random() > 0.1 else None,
             address=fake.address(),
             city=fake.city(),
             country=fake.country(),
@@ -145,7 +151,7 @@ def generate_users():
             customer_tier=tier
         )
         users.append(user)
-        
+        print(f"✅Generated user: {user.name}, Email: {email}, Tier: {tier}, Active: {is_active}, Phone: {user.phone}, Address: {user.address}, City: {user.city}, Country: {user.country}, Registration Date: {user.registration_date}")
         # Store for synchronization
         SHARED_DATA['user_ids'].append(user_id)
         SHARED_DATA['user_profiles'][user_id] = {
@@ -274,26 +280,29 @@ def generate_items(order, products):
     
     for product in selected_products:
         quantity = random.randint(1, 3)
-        
-        # 1% chance of data quality issues
         if random.random() < 0.01:
-            quantity = random.choice([0, -1, 100])  # Invalid quantities
-        
-        unit_price = product.price
-        
-        # 2% chance of pricing errors in order items
+            quantity = random.choice([0, -1, 100])  # intentionally bad
+
+        unit_price = product.price if product.price is not None else random.uniform(5, 50)
         if random.random() < 0.02:
-            unit_price = 0.0 or None
-        
-        # Discount per item (5% chance)
-        discount_per_item = 0.0
-        if random.random() < 0.05:
-            discount_per_item = round(unit_price * random.uniform(0.1, 0.3), 2)
-        
-        total_price = max(0, (unit_price - discount_per_item) * quantity)
+            unit_price = random.choice([None, 0.0, -5.0])  # simulate pricing errors
+
+        if unit_price is None or quantity is None or quantity <= 0:
+            # fallback logic: random total_price but logically valid
+            fallback_price = random.uniform(10, 100)
+            total_price = fallback_price
+            discount_per_item = 0.0
+            unit_price = fallback_price / max(quantity, 1)  # fake it
+        else:
+            # safe calculation
+            discount_per_item = 0.0
+            if random.random() < 0.05:
+                discount_per_item = round(unit_price * random.uniform(0.1, 0.3), 2)
+            total_price = max(0, (unit_price - discount_per_item) * quantity)
+
         total_amount += total_price
-        discount_amount += discount_per_item * quantity
-        
+        discount_amount += discount_per_item * quantity if quantity else 0
+
         item = OrderItem(
             item_id=str(uuid.uuid4()),
             order_id=order.order_id,

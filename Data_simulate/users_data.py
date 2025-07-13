@@ -27,7 +27,7 @@ TIMEZONES = [
 ]
 
 # PostgreSQL connection string
-PG_URL = "postgresql+psycopg2://username:password@localhost:5432/mydb"  # ← Update this
+PG_URL = "postgresql+psycopg2://postgres:141124@localhost:5432/userdb"  # ← Update this
 engine = create_engine(PG_URL)
 metadata = MetaData()
 
@@ -632,11 +632,11 @@ def insert_to_postgres(table, records):
         return
     
     batch_size = 1000
-    with engine.connect() as conn:
+    with engine.begin() as conn:  # begin() sẽ mở transaction và tự commit nếu không có lỗi
         for i in range(0, len(records), batch_size):
             batch = records[i:i + batch_size]
             conn.execute(table.insert(), batch)
-            conn.commit()
+
 
 # ---------- MAIN ----------
 def main():
@@ -900,3 +900,10 @@ def generate_data_quality_report(users, sessions, interactions, preferences, not
     print(f"  📈 Conversion rate: {round((sessions_with_conversions / len(sessions)) * 100, 2)}%")
     
     return report
+
+if __name__ == "__main__":
+    success = main()
+    if not success:
+        print("❌ Data generation failed. Please check the logs for details.")
+    else:
+        print("✅ Data generation completed successfully!")
