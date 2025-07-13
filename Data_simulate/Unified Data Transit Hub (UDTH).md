@@ -1,4 +1,3 @@
-# Unified-Data-Transit-Hub-UDTH
 _Hệ thống trung chuyển và chuẩn hóa dữ liệu phức tạp từ nhiều cơ sở dữ liệu về kho dữ liệu phân tích tập trung_
 
 
