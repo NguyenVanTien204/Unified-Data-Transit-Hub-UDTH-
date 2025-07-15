@@ -1,12 +1,7 @@
 # test connection script
 import pandas as pd
 from manual_extractor import ManualExtractor
-
-
-# Test connection to databases and extract data
-import pandas as pd
 import json
-
 def test_connection(postgres_uri: str, mongo_uri: str, mysql_uri: str, mongo_db_name: str):
     extractor = None
     try:
