@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-07-13T21:47:58.458528",
+  "total_records": {
+    "products": 50,
+    "stock_levels": 50,
+    "messages": 200,
+    "ratings": 300
+  },
+  "data_quality_issues": {
+    "products": {
+      "negative_prices": 0,
+      "missing_categories": 0,
+      "duplicate_names": 0,
+      "malformed_tags": 1,
+      "invalid_variants": 1
+    },
+    "stock_levels": {
+      "negative_stock": 0,
+      "warehouse_inconsistencies": 5
+    },
+    "messages": {
+      "null_content": 0,
+      "timestamp_issues": 1
+    },
+    "ratings": {
+      "invalid_ratings": 13,
+      "malformed_tags": 9,
+      "null_comments": 10
+    }
+  }
+}

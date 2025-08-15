@@ -1,0 +1,357 @@
+{
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "_id": {
+      "type": [
+        "string"
+      ],
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "product_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "total_available": {
+      "type": [
+        "integer"
+      ]
+    },
+    "warehouses": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "north": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "stock": {
+              "type": [
+                "integer"
+              ]
+            },
+            "reserved": {
+              "type": [
+                "integer"
+              ]
+            },
+            "last_updated": {
+              "type": [
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "reorder_point": {
+              "type": [
+                "integer"
+              ]
+            },
+            "max_capacity": {
+              "type": [
+                "integer"
+              ]
+            },
+            "location": {
+              "type": [
+                "string"
+              ]
+            },
+            "temperature_controlled": {
+              "type": [
+                "boolean"
+              ]
+            },
+            "manager": {
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "south": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "stock": {
+              "type": [
+                "integer"
+              ]
+            },
+            "reserved": {
+              "type": [
+                "integer"
+              ]
+            },
+            "last_updated": {
+              "type": [
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "reorder_point": {
+              "type": [
+                "integer"
+              ]
+            },
+            "max_capacity": {
+              "type": [
+                "integer"
+              ]
+            },
+            "location": {
+              "type": [
+                "string"
+              ]
+            },
+            "temperature_controlled": {
+              "type": [
+                "boolean"
+              ]
+            },
+            "manager": {
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "central": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "stock": {
+              "type": [
+                "integer"
+              ]
+            },
+            "reserved": {
+              "type": [
+                "integer"
+              ]
+            },
+            "last_updated": {
+              "type": [
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "reorder_point": {
+              "type": [
+                "integer"
+              ]
+            },
+            "max_capacity": {
+              "type": [
+                "integer"
+              ]
+            },
+            "location": {
+              "type": [
+                "string"
+              ]
+            },
+            "temperature_controlled": {
+              "type": [
+                "boolean"
+              ]
+            },
+            "manager": {
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "east": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "stock": {
+              "type": [
+                "integer"
+              ]
+            },
+            "reserved": {
+              "type": [
+                "integer"
+              ]
+            },
+            "last_updated": {
+              "type": [
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "reorder_point": {
+              "type": [
+                "integer"
+              ]
+            },
+            "max_capacity": {
+              "type": [
+                "integer"
+              ]
+            },
+            "location": {
+              "type": [
+                "string"
+              ]
+            },
+            "temperature_controlled": {
+              "type": [
+                "boolean"
+              ]
+            },
+            "manager": {
+              "type": [
+                "string"
+              ]
+            }
+          }
+        },
+        "west": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "stock": {
+              "type": [
+                "integer"
+              ]
+            },
+            "reserved": {
+              "type": [
+                "integer"
+              ]
+            },
+            "last_updated": {
+              "type": [
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "reorder_point": {
+              "type": [
+                "integer"
+              ]
+            },
+            "max_capacity": {
+              "type": [
+                "integer"
+              ]
+            },
+            "location": {
+              "type": [
+                "string"
+              ]
+            },
+            "temperature_controlled": {
+              "type": [
+                "boolean"
+              ]
+            },
+            "manager": {
+              "type": [
+                "string"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "last_inventory_check": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "pending_orders": {
+      "type": [
+        "integer"
+      ]
+    },
+    "incoming_shipments": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "shipment_id": {
+            "type": [
+              "string"
+            ]
+          },
+          "quantity": {
+            "type": [
+              "integer"
+            ]
+          },
+          "expected_date": {
+            "type": [
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "supplier": {
+            "type": [
+              "string"
+            ]
+          },
+          "status": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "alerts": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "type": {
+            "type": [
+              "string"
+            ]
+          },
+          "warehouse": {
+            "type": [
+              "string"
+            ]
+          },
+          "quantity": {
+            "type": [
+              "integer"
+            ]
+          },
+          "created_at": {
+            "type": [
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "resolved": {
+            "type": [
+              "boolean"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "_id": {
+      "type": [
+        "string"
+      ],
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "rating_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "product_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "user_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "rating": {
+      "type": [
+        "integer"
+      ]
+    },
+    "verified_purchase": {
+      "type": [
+        "boolean"
+      ]
+    },
+    "tags": {
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "comment": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "helpful_votes": {
+      "type": [
+        "integer"
+      ]
+    },
+    "total_votes": {
+      "type": [
+        "integer"
+      ]
+    },
+    "timestamp": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "status": {
+      "type": [
+        "string"
+      ]
+    },
+    "language": {
+      "type": [
+        "string"
+      ]
+    },
+    "device_type": {
+      "type": [
+        "string"
+      ]
+    },
+    "location": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "country": {
+          "type": [
+            "string"
+          ]
+        },
+        "city": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    },
+    "images": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "string"
+        ]
+      }
+    },
+    "response": {
+      "type": [
+        "null",
+        "object"
+      ]
+    }
+  }
+}

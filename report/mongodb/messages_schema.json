@@ -1,0 +1,172 @@
+{
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "_id": {
+      "type": [
+        "string"
+      ],
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "thread_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "user_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "conversation_type": {
+      "type": [
+        "string"
+      ]
+    },
+    "status": {
+      "type": [
+        "string"
+      ]
+    },
+    "priority": {
+      "type": [
+        "string"
+      ]
+    },
+    "assigned_agent": {
+      "type": [
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "satisfaction_rating": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "resolved": {
+      "type": [
+        "boolean"
+      ]
+    },
+    "resolution_time_minutes": {
+      "type": [
+        "integer"
+      ]
+    },
+    "messages": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "message_id": {
+            "type": [
+              "string"
+            ]
+          },
+          "sender": {
+            "type": [
+              "string"
+            ]
+          },
+          "sender_type": {
+            "type": [
+              "string"
+            ]
+          },
+          "receiver": {
+            "type": [
+              "string"
+            ]
+          },
+          "timestamp": {
+            "type": [
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "content": {
+            "type": [
+              "string"
+            ]
+          },
+          "message_type": {
+            "type": [
+              "string"
+            ]
+          },
+          "priority": {
+            "type": [
+              "string"
+            ]
+          },
+          "channel": {
+            "type": [
+              "string"
+            ]
+          },
+          "attachments": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "filename": {
+                  "type": [
+                    "string"
+                  ]
+                },
+                "url": {
+                  "type": [
+                    "string"
+                  ]
+                },
+                "size": {
+                  "type": [
+                    "integer"
+                  ]
+                }
+              }
+            }
+          },
+          "internal_notes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "string"
+        ]
+      }
+    }
+  }
+}

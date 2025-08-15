@@ -1,0 +1,108 @@
+{
+  "generation_timestamp": "2025-07-13T21:46:07.401245",
+  "summary": {
+    "total_users": 100,
+    "total_sessions": 1500,
+    "total_interactions": 3000,
+    "total_preferences": 800,
+    "total_notifications": 1000
+  },
+  "data_quality_issues": {
+    "users": {
+      "missing_email": 2,
+      "missing_email_percentage": 2.0,
+      "negative_spending": 4,
+      "negative_spending_percentage": 4.0,
+      "inactive_users": 13,
+      "inactive_percentage": 13.0
+    },
+    "sessions": {
+      "very_long_sessions": 23,
+      "very_long_percentage": 1.53,
+      "sessions_with_conversions": 140,
+      "conversion_rate": 9.33
+    },
+    "interactions": {
+      "failed_interactions": 90,
+      "failure_rate": 3.0,
+      "missing_metadata": 1154,
+      "missing_metadata_percentage": 38.47
+    },
+    "preferences": {
+      "low_confidence": 136,
+      "low_confidence_percentage": 17.0,
+      "explicit_preferences": 159,
+      "explicit_percentage": 19.88
+    },
+    "notifications": {
+      "unread_notifications": 300,
+      "unread_percentage": 30.0,
+      "clicked_notifications": 201,
+      "click_rate": 20.1
+    }
+  },
+  "business_metrics": {
+    "total_user_spending": 405850.52,
+    "average_user_spending": 4058.51,
+    "average_session_duration_minutes": 38.56,
+    "customer_tier_distribution": {
+      "silver": 30,
+      "gold": 30,
+      "platinum": 17,
+      "bronze": 23
+    },
+    "device_type_distribution": {
+      "tablet": 309,
+      "mobile": 307,
+      "desktop": 291,
+      "smartwatch": 280,
+      "smart_tv": 313
+    },
+    "interaction_type_distribution": {
+      "add_to_cart": 308,
+      "review_write": 313,
+      "product_view": 323,
+      "wishlist_add": 296,
+      "product_comment": 289,
+      "purchase": 311,
+      "product_rating": 308,
+      "product_like": 261,
+      "search": 291,
+      "filter_apply": 300
+    },
+    "notification_channel_distribution": {
+      "push": 259,
+      "sms": 245,
+      "in_app": 248,
+      "email": 248
+    }
+  },
+  "data_freshness": {
+    "users_last_30_days": 87,
+    "sessions_last_7_days": 128,
+    "interactions_last_24_hours": 49
+  },
+  "recommendations": [
+    {
+      "type": "data_quality",
+      "priority": "high",
+      "issue": "Missing email addresses",
+      "description": "2 users have missing email addresses",
+      "suggestion": "Implement email validation and collection processes"
+    },
+    {
+      "type": "data_quality",
+      "priority": "medium",
+      "issue": "Negative spending values",
+      "description": "4 users have negative spending amounts",
+      "suggestion": "Review refund and return processing logic"
+    },
+    {
+      "type": "data_quality",
+      "priority": "low",
+      "issue": "Unusually long sessions",
+      "description": "23 sessions are longer than 8 hours",
+      "suggestion": "Implement session timeout and cleanup mechanisms"
+    }
+  ]
+}

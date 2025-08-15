@@ -1,0 +1,92 @@
+{
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "_id": {
+      "type": [
+        "string"
+      ],
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "event_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "event_type": {
+      "type": [
+        "string"
+      ]
+    },
+    "user_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "product_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "timestamp": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "session_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "user_agent": {
+      "type": [
+        "string"
+      ]
+    },
+    "ip_address": {
+      "type": [
+        "string"
+      ]
+    },
+    "referrer": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "page_url": {
+      "type": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "search_query": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "filter_applied": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "cart_total": {
+          "type": [
+            "null",
+            "number"
+          ]
+        }
+      }
+    }
+  }
+}

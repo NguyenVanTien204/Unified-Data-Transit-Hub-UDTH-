@@ -1,0 +1,246 @@
+{
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "_id": {
+      "type": [
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "string"
+      ]
+    },
+    "category": {
+      "type": [
+        "string"
+      ]
+    },
+    "brand": {
+      "type": [
+        "string"
+      ]
+    },
+    "price": {
+      "type": [
+        "number"
+      ]
+    },
+    "description": {
+      "type": [
+        "string"
+      ]
+    },
+    "available": {
+      "type": [
+        "boolean"
+      ]
+    },
+    "tags": {
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "specs": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "brand": {
+          "type": [
+            "string"
+          ]
+        },
+        "warranty": {
+          "type": [
+            "string"
+          ]
+        },
+        "weight": {
+          "type": [
+            "string"
+          ]
+        },
+        "origin": {
+          "type": [
+            "string"
+          ]
+        },
+        "pages": {
+          "type": [
+            "integer"
+          ]
+        },
+        "language": {
+          "type": [
+            "string"
+          ]
+        },
+        "format": {
+          "type": [
+            "string"
+          ]
+        },
+        "power": {
+          "type": [
+            "string"
+          ]
+        },
+        "connectivity": {
+          "type": [
+            "string"
+          ]
+        },
+        "display": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "material": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "care": {
+          "type": [
+            "string"
+          ]
+        }
+      }
+    },
+    "variants": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "sku": {
+            "type": [
+              "string"
+            ]
+          },
+          "color": {
+            "type": [
+              "string"
+            ]
+          },
+          "size": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "price_diff": {
+            "type": [
+              "number"
+            ]
+          },
+          "stock": {
+            "type": [
+              "integer"
+            ]
+          }
+        }
+      }
+    },
+    "images": {
+      "type": [
+        "array"
+      ],
+      "items": {
+        "type": [
+          "string"
+        ]
+      }
+    },
+    "seo": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "title": {
+          "type": [
+            "string"
+          ]
+        },
+        "description": {
+          "type": [
+            "string"
+          ]
+        },
+        "keywords": {
+          "type": [
+            "array"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "inventory": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "total_stock": {
+          "type": [
+            "integer"
+          ]
+        },
+        "reserved": {
+          "type": [
+            "integer"
+          ]
+        },
+        "safety_stock": {
+          "type": [
+            "integer"
+          ]
+        }
+      }
+    },
+    "created_at": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "status": {
+      "type": [
+        "string"
+      ]
+    },
+    "featured": {
+      "type": [
+        "boolean"
+      ]
+    },
+    "sales_count": {
+      "type": [
+        "integer"
+      ]
+    },
+    "view_count": {
+      "type": [
+        "integer"
+      ]
+    }
+  }
+}
