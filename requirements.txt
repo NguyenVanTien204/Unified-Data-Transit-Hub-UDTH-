@@ -1,0 +1,12 @@
+# Core ETL deps
+pandas>=1.5
+SQLAlchemy>=1.4
+pymongo>=4.6
+PyYAML>=6.0
+
+# DB drivers
+psycopg2-binary>=2.9
+PyMySQL>=1.1
+
+# Kafka client (librdkafka-based)
+confluent-kafka>=2.5

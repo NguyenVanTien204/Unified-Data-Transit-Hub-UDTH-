@@ -1,0 +1,21 @@
+bootstrap_servers: "localhost:9092"
+default_topic_prefix: "udth"
+batch_size: 200
+retry_max: 3
+throttle_time: 0.05
+topics:
+  postgres.users: "udth.postgres.users"
+  postgres.interactions: "udth.postgres.interactions"
+  postgres.user_notifications: "udth.postgres.user_notifications"
+  postgres.user_preferences: "udth.postgres.user_preferences"
+  postgres.user_sessions: "udth.postgres.user_sessions"
+  mysql.users: "udth.mysql.users"
+  mysql.orders: "udth.mysql.orders"
+  mysql.order_items: "udth.mysql.order_items"
+  mysql.products: "udth.mysql.products"
+  mysql.transactions: "udth.mysql.transactions"
+  mongo.analytics: "udth.mongo.analytics"
+  mongo.products: "udth.mongo.products"
+  mongo.ratings: "udth.mongo.ratings"
+  mongo.stock_levels: "udth.mongo.stock_levels"
+  mongo.users_messages: "udth.mongo.users_messages"

@@ -1,6 +1,6 @@
 # manual data extractor
 import pandas as pd
-from connector import DataConnector
+from .connector import DataConnector
 
 
 class ManualExtractor:
@@ -22,7 +22,7 @@ class ManualExtractor:
             "user_sessions": user_sessions_df,
             "users": user_df
         }
-    
+
     def extract_mysql_data(self):
         self.connector.connect_mysql()
         order_items_df = pd.read_sql("SELECT * FROM order_items", self.connector.mysql_engine)
@@ -38,7 +38,7 @@ class ManualExtractor:
             "transactions": transactions_df,
             "users": users_df
         }
-    
+
     def extract_mongo_data(self):
         mongo_db = self.connector.connect_mongo()
         target_collection = ['analytics', 'products', 'ratings', 'stock_levels', 'users_messages']
