@@ -1,0 +1,239 @@
+users (
+  user_id STRING,
+  source STRING,                -- postgres | mysql
+  name STRING,
+  email STRING,
+  phone STRING,
+  gender STRING,
+  dob DATE,
+  country STRING,
+  city STRING,
+  timezone STRING,
+  signup_date DATE,
+  last_login TIMESTAMP,
+  is_active BOOL,
+  customer_tier STRING,
+  total_spent NUMERIC,
+  preferred_language STRING,
+  marketing_consent BOOL,
+  address STRING,               -- từ MySQL
+  sessions ARRAY<STRUCT<
+    session_id STRING,
+    start_time TIMESTAMP,
+    end_time TIMESTAMP,
+    device_type STRING,
+    browser STRING,
+    os STRING,
+    ip_address STRING,
+    location_country STRING,
+    location_city STRING,
+    total_interactions INT64,
+    pages_visited INT64,
+    conversion_event STRING,
+    exit_page STRING,
+    session_duration_minutes INT64
+  >>,
+  preferences ARRAY<STRUCT<
+    category STRING,
+    preference_type STRING,
+    preference_value STRING,
+    confidence_score FLOAT64,
+    last_updated TIMESTAMP,
+    source STRING,
+    is_explicit BOOL
+  >>,
+  notifications ARRAY<STRUCT<
+    notification_id STRING,
+    type STRING,
+    title STRING,
+    content STRING,
+    sent_at TIMESTAMP,
+    read_at TIMESTAMP,
+    clicked_at TIMESTAMP,
+    channel STRING,
+    priority STRING,
+    category STRING,
+    metadata JSON
+  >>
+)
+
+
+orders (
+  order_id STRING,
+  user_id STRING,
+  order_date TIMESTAMP,
+  status STRING,
+  total_amount NUMERIC,
+  shipping_fee NUMERIC,
+  tax_amount NUMERIC,
+  discount_amount NUMERIC,
+  payment_status STRING,
+  currency STRING,
+  shipping_address STRING,
+  notes STRING,
+  items ARRAY<STRUCT<
+    item_id STRING,
+    product_id STRING,
+    product_name STRING,
+    category STRING,
+    brand STRING,
+    quantity INT64,
+    unit_price NUMERIC,
+    discount_per_item NUMERIC,
+    total_price NUMERIC
+  >>,
+  transactions ARRAY<STRUCT<
+    transaction_id STRING,
+    amount NUMERIC,
+    method STRING,
+    status STRING,
+    timestamp TIMESTAMP,
+    gateway_response JSON,
+    reference_number STRING,
+    fee NUMERIC
+  >>
+)
+
+events (
+  event_id STRING,
+  user_id STRING,
+  session_id STRING,
+  event_type STRING,             -- click, view, search, add_to_cart...
+  target_id STRING,
+  timestamp TIMESTAMP,
+  duration_seconds INT64,
+  success BOOL,
+  device_type STRING,
+  browser STRING,
+  os STRING,
+  ip_address STRING,
+  user_agent STRING,
+  referrer STRING,
+  page_url STRING,
+  metadata JSON                  -- giữ cả analytics.metadata + interaction.metadata
+)
+
+
+messages (
+  thread_id STRING,
+  user_id STRING,
+  conversation_type STRING,
+  status STRING,
+  priority STRING,
+  assigned_agent STRING,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  satisfaction_rating INT64,
+  resolved BOOL,
+  resolution_time_minutes INT64,
+  tags ARRAY<STRING>,
+  messages ARRAY<STRUCT<
+    message_id STRING,
+    sender STRING,
+    sender_type STRING,
+    receiver STRING,
+    timestamp TIMESTAMP,
+    content STRING,
+    message_type STRING,
+    priority STRING,
+    channel STRING,
+    attachments ARRAY<STRUCT<
+      filename STRING,
+      url STRING,
+      size INT64
+    >>,
+    internal_notes STRING
+  >>
+)
+
+products (
+  product_id STRING,
+  source STRING,            -- mysql | mongo
+  name STRING,
+  category STRING,
+  brand STRING,
+  price NUMERIC,
+  description STRING,
+  available BOOL,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  is_active BOOL,
+  status STRING,
+  featured BOOL,
+  sales_count INT64,
+  view_count INT64,
+  tags ARRAY<STRING>,
+  specs JSON,               -- lưu specs chi tiết (nested nhiều field khác nhau)
+  variants ARRAY<STRUCT<
+    sku STRING,
+    color STRING,
+    size STRING,
+    price_diff NUMERIC,
+    stock INT64
+  >>,
+  images ARRAY<STRING>,
+  seo STRUCT<
+    title STRING,
+    description STRING,
+    keywords ARRAY<STRING>
+  >,
+  inventory STRUCT<
+    total_stock INT64,
+    reserved INT64,
+    safety_stock INT64
+  >,
+  stock_levels ARRAY<STRUCT<
+    warehouse STRING,
+    stock INT64,
+    reserved INT64,
+    last_updated TIMESTAMP,
+    reorder_point INT64,
+    max_capacity INT64,
+    location STRING,
+    temperature_controlled BOOL,
+    manager STRING
+  >>,
+  incoming_shipments ARRAY<STRUCT<
+    shipment_id STRING,
+    quantity INT64,
+    expected_date TIMESTAMP,
+    supplier STRING,
+    status STRING
+  >>,
+  alerts ARRAY<STRUCT<
+    type STRING,
+    warehouse STRING,
+    quantity INT64,
+    created_at TIMESTAMP,
+    resolved BOOL
+  >>,
+  ratings ARRAY<STRUCT<
+    rating_id STRING,
+    user_id STRING,
+    rating INT64,
+    verified_purchase BOOL,
+    tags ARRAY<STRING>,
+    comment STRING,
+    helpful_votes INT64,
+    total_votes INT64,
+    timestamp TIMESTAMP,
+    updated_at TIMESTAMP,
+    status STRING,
+    language STRING,
+    device_type STRING,
+    location STRUCT<country STRING, city STRING>,
+    images ARRAY<STRING>,
+    response JSON
+  >>
+)
+
+fact_user_orders (
+  user_id STRING,
+  order_id STRING,
+  order_date DATE,
+  customer_tier STRING,
+  country STRING,
+  total_amount NUMERIC,
+  product_count INT64,
+  payment_status STRING
+)

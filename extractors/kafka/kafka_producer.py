@@ -11,7 +11,7 @@ class KafkaDataSender:
         with open(config_path, 'r') as f:
             config = yaml.safe_load(f)
 
-        # Allow either bootstrap.servers (confluent style) or bootstrap_servers (legacy in this repo)
+        # Allow either bootstrap.servers (confluent style) or bootstrap_servers
         self.bootstrap_servers = (
             config.get('bootstrap.servers')
             or config.get('bootstrap_servers')
@@ -25,9 +25,7 @@ class KafkaDataSender:
 
         producer_conf = {
             'bootstrap.servers': self.bootstrap_servers,
-            # Safer defaults
             'enable.idempotence': True,
-            # Optional tunables with sensible fallbacks
             'compression.type': config.get('compression.type', 'snappy'),
             'linger.ms': int(config.get('linger.ms', 50)),
             'batch.num.messages': int(config.get('batch.num.messages', 10000)),

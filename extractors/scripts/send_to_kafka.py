@@ -1,8 +1,19 @@
 """Simple end-to-end extract and push to Kafka for manual testing."""
+import os
 import pandas as pd
 from .manual_extractor import ManualExtractor
 from pathlib import Path
 from typing import Dict, List
+from dotenv import load_dotenv
+from pathlib import Path
+
+
+env_path = Path(__file__).resolve().parents[2] / '.env'
+load_dotenv(dotenv_path=env_path)
+
+POSTGRES_URL = os.getenv("POSTGRES_URL")
+MONGO_URL = os.getenv("MONGO_URL")
+MYSQL_URL = os.getenv("MYSQL_URL")
 
 # Import the Kafka sender
 from extractors.kafka.kafka_producer import KafkaDataSender
@@ -62,9 +73,9 @@ def test_connection(postgres_uri: str, mongo_uri: str, mysql_uri: str, mongo_db_
 
 if __name__ == "__main__":
     test_connection(
-        postgres_uri="postgresql+psycopg2://postgres:141124@localhost:5432/userdb",
-        mongo_uri="mongodb://localhost:27017/",
-        mysql_uri="mysql+pymysql://root:141124@localhost:3306/ordersdb",
+        postgres_uri=POSTGRES_URL,
+        mongo_uri=MONGO_URL,
+        mysql_uri=MYSQL_URL,
         mongo_db_name="mock_shop",
         kafka_config_path=str(Path(__file__).resolve().parents[1] / "kafka" / "kafka_config.yaml"),
     )
